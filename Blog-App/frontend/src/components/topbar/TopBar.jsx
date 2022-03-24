@@ -7,10 +7,38 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
-        <i className="topIcon fa-brands fa-facebook-square"></i>
-        <i className="topIcon fa-brands fa-twitter-square"></i>
-        <i className="topIcon fa-brands fa-pinterest-square"></i>
-        <i className="topIcon fa-brands fa-instagram-square"></i>
+        <a
+          href="https://www.facebook.com"
+          title="Facebook"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="topIcon fa-brands fa-facebook-square"></i>
+        </a>
+        <a
+          href="https://www.twitter.com"
+          title="Twitter"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="topIcon fa-brands fa-twitter-square"></i>
+        </a>
+        <a
+          href="https://www.pinterest.com"
+          title="Pinterest"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="topIcon fa-brands fa-pinterest-square"></i>
+        </a>
+        <a
+          href="https://www.instagram.com"
+          title="Instagram"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="topIcon fa-brands fa-instagram-square"></i>
+        </a>
       </div>
 
       <div className="topCenter">
@@ -37,18 +65,36 @@ export default function TopBar() {
           </li>
           <li className="topListItem">
             <Link to="/logout" className="link">
-              logout
+              {user && "logout"}
             </Link>
           </li>
         </ul>
       </div>
 
       <div className="topRight">
-        <img
-          className="topImg"
-          src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt="profile"
-        />
+        {user ? (
+          <Link to="/settings" className="link">
+            <img
+              className="topImg"
+              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="profile"
+            />
+          </Link>
+        ) : (
+          <ul className="topList">
+            <li className="topListItem">
+              <Link to="/login" className="link">
+                login
+              </Link>
+            </li>
+            <li className="topListItem">
+              <Link to="/register" className="link">
+                register
+              </Link>
+            </li>
+          </ul>
+        )}
+
         <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
