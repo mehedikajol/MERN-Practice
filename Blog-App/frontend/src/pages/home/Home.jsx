@@ -13,6 +13,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/posts" + search);
+      console.log(res.data);
       setPosts(res.data);
     };
     fetchPosts();
@@ -22,7 +23,16 @@ export default function Home() {
     <>
       <Header />
       <div className="home">
-        <Posts posts={posts} />
+        {posts.length !== 0 ? (
+          <Posts posts={posts} />
+        ) : (
+          <div>
+            <h1 style={{ margin: "100px" }}>
+              There is no posts matched with your query!!!
+            </h1>
+          </div>
+        )}
+
         <Sidebar />
       </div>
     </>
