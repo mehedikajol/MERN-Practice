@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { stringify } = require("nodemon/lib/utils");
 
 const PostSchema = new mongoose.Schema(
   {
@@ -8,6 +9,10 @@ const PostSchema = new mongoose.Schema(
       unique: true,
     },
     desc: {
+      type: String,
+      required: true,
+    },
+    username: {
       type: String,
       required: true,
     },
