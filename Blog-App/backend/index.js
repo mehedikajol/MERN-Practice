@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
+const usersRoute = require("./routes/users");
 
 dotenv.config();
 app.use(express.json());
@@ -16,7 +17,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/backend/auth", authRoute);
+app.use("/backend/users", usersRoute);
 
-app.listen("5000", () => {
-  console.log("Backend is running in port 5000");
+app.listen(process.env.PORT, () => {
+  console.log(`Backend is running in port ${process.env.PORT}`);
 });
